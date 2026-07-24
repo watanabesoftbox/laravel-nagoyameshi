@@ -14,6 +14,6 @@ class HomeController extends Controller
         $categories = Category::all();
         $new_restaurants = Restaurant::orderBy('created_at', 'desc')->take(6)->get();
 
-        return view('home', compact('highly_rated_restaurants', 'categories', 'new_restaurants'));
+        return view('admin.home');
     }
 }
