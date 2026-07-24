@@ -34,7 +34,7 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertTrue(Auth::guard('admin')->check());
-        $response->assertRedirect('/admin/home');
+        $response->assertRedirect('/');
     }
 
     public function test_admins_can_not_authenticate_with_invalid_password(): void
