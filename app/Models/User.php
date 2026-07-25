@@ -12,7 +12,6 @@ use Laravel\Cashier\Billable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
     use HasFactory, Notifiable, Billable;
 
     /**
@@ -53,5 +52,9 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
     }
 }
