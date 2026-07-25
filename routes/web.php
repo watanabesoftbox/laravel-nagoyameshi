@@ -11,11 +11,16 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\TermController;
 
 Route::group(['middleware' => 'guest:admin'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     Route::resource('restaurants', RestaurantController::class)->only(['index', 'show']);
+
+    Route::get('company', [CompanyController::class, 'index'])->name('company.index');
+    Route::get('terms', [TermController::class, 'index'])->name('terms.index');
 
     Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::resource('user', UserController::class)->only(['index', 'edit', 'update']);
